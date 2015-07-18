@@ -1,4 +1,3 @@
-
 User:
     - name
     - email
@@ -9,9 +8,11 @@ User:
 
 Student:
     - User
+    + Skills
 
 Teacher:
     - User
+    + Classes
 
 Staff:
     - User
@@ -34,9 +35,7 @@ Band:
 Class:
     + Teachers
     + Student
-
-
-    Enum ClassType:
+    - Enum ClassType
 
 Skill:
     - name
@@ -47,8 +46,14 @@ Skill:
         - 2
         - 3
 
-Event:
+Session:
     + Staff
     + Volunteer
     + Classes
     + Band
+    - date
+
+Series
+    + Session
+    - start_date
+    - end_date

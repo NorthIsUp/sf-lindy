@@ -1,5 +1,10 @@
 .PHONY: clean-pyc clean-build docs clean
 
+develop:
+	pip install pip\<8 --upgrade
+	pip install -r requirements/all.txt
+
+
 help:
 	@echo "clean - remove all build, test, coverage and Python artifacts"
 	@echo "clean-build - remove build artifacts"

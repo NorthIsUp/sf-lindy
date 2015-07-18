@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import sys
+
+
+sys.path.append('src')
 
 try:
     from setuptools import setup
@@ -33,8 +37,9 @@ setup(
     packages=[
         'sflindy',
     ],
-    package_dir={'sflindy':
-                 'sflindy'},
+    package_dir={
+        'sflindy': 'src/sflindy'
+    },
     include_package_data=True,
     install_requires=requirements,
     license="BSD",
