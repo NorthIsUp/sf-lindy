@@ -2,11 +2,11 @@
 sflindy
 ===============================
 
-.. image:: https://img.shields.io/travis/NorthIsUp/sflindy.svg
-        :target: https://travis-ci.org/NorthIsUp/sflindy
+.. image:: https://img.shields.io/travis/NorthIsUp/sf-lindy.svg
+        :target: https://travis-ci.org/NorthIsUp/sf-lindy
 
-.. image:: https://img.shields.io/pypi/v/sflindy.svg
-        :target: https://pypi.python.org/pypi/sflindy
+.. image:: https://img.shields.io/pypi/v/sf-lindy.svg
+        :target: https://pypi.python.org/pypi/sf-lindy
 
 
 SF Lindy portal site
