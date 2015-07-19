@@ -2,12 +2,15 @@
 
 from __future__ import absolute_import
 
-from sys import path
+# Standard Library
+import sys
+from os import path
 
 
-path.append('src')
+sys.path.insert(0, path.abspath('./src'))
 
-from sflindy.manage import main
+if __name__ == '__main__':
+    from sflindy.manage import main
 
 
-main()
+    main()
