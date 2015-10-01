@@ -1,3 +1,0 @@
-django-devserver
-django-debug-toolbar
-isort

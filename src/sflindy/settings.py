@@ -10,27 +10,24 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
+from __future__ import absolute_import
+
+from path import path
 
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SFLINDY_DIR = path(__file__).abspath().dirname()
+PROJECT_ROOT = (SFLINDY_DIR / '..' / '..').abspath()
 
+DEBUG = True
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'c8g!*be4@&o3qi%ia8*5=+46p^%nxmkz+po88b2em8tpxynw*@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
 ALLOWED_HOSTS = []
 
-
 # Application definition
-
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,13 +35,15 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_jinja',
+    'pipeline',
+    'djangobower',
 
     'sflindy',
     'portal',
-    'bootleggers',
     'ninetwenty',
-    'fogcity',
+
+    # Debug
+    'debug_toolbar',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -62,8 +61,17 @@ ROOT_URLCONF = 'sflindy.urls'
 
 TEMPLATES = [
     {
+        'BACKEND': 'django.template.backends.jinja2.Jinja2',
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'environment': 'sflindy.jinja2.environment',
+            'extensions': [
+                'pipeline.templatetags.ext.PipelineExtension',
+            ]
+        },
+    },
+    {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,45 +84,69 @@ TEMPLATES = [
                 'django.template.context_processors.i18n',
                 'django.template.context_processors.tz',
             ],
-        },
-    },
+
+        }
+    }
 ]
 
 WSGI_APPLICATION = 'sflindy.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': PROJECT_ROOT / 'db.sqlite3',
     }
 }
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/1.8/topics/i18n/
-
-LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
-USE_I18N = True
 
 USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.8/howto/static-files/
-
+STATIC_ROOT = PROJECT_ROOT / 'static'
 STATIC_URL = '/static/'
 
-TEMPLATE_LOADERS = (
-    'django_jinja.loaders.AppLoader',
-    'django_jinja.loaders.FileSystemLoader',
+APPEND_SLASH = True
 
+PIPELINE_COMPILERS = (
+    'react.utils.pipeline.JSXCompiler',
+    'pipeline.compilers.sass.SASSCompiler',
+)
+PIPELINE_SASS_BINARY = '/usr/bin/env sassc'
+
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'pipeline.finders.PipelineFinder',
+    'djangobower.finders.BowerFinder',
+)
+
+PIPELINE_CSS = {
+    'ninetwenty': {
+        'source_filenames': (
+            'sass/*.sass',
+        ),
+        'output_filename': 'css/ninetwenty.css',
+        'extra_context': {
+            'media': 'screen,projection',
+        },
+    },
+}
+
+PIPELINE_JS = {
+    'jsx': {
+        'source_filenames': (
+            'jsx/*.jsx',
+        ),
+        'output_filename': 'js/app.js',
+    }
+}
+
+BOWER_COMPONENTS_ROOT = PROJECT_ROOT / 'vendor'
+
+BOWER_INSTALLED_APPS = (
+    'underscore',
+    'react-bootstrap',
 )

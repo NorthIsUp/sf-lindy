@@ -1,0 +1,17 @@
+# global
+django<1.9
+django-jinja
+django-pipeline
+django-bower
+pyreact
+path.py
+
+# test
+tox
+pytest
+pytest-django
+
+# dev
+isort
+autopep8
+django-debug-toolbar
