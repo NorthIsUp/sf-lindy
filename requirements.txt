@@ -5,6 +5,7 @@ django-pipeline
 django-bower
 pyreact
 path.py
+django-toolbelt
 
 # test
 tox
