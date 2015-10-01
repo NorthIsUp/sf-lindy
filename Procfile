@@ -1,1 +1,1 @@
-web: gunicorn hellodjango.wsgi --log-file -
+web: gunicorn --env DJANGO_SETTINGS_MODULE=sflindy.settings --chdir ./src sflindy.wsgi --log-file -
