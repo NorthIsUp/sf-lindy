@@ -2,8 +2,8 @@
 Credits
 =======
 
-Development Lead
-----------------
+Development Leads
+-----------------
 
 * Adam Hitchcock <adam@northisup.com>
 

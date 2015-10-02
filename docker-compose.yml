@@ -1,0 +1,5 @@
+sflindy:
+    build: .
+    command: run
+    ports:
+        - "8000:8000"

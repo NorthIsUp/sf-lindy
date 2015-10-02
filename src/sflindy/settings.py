@@ -12,8 +12,9 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 from __future__ import absolute_import
 
+# External Libraries
+from dj_database_url import config
 from path import path
-
 
 SFLINDY_DIR = path(__file__).abspath().dirname()
 PROJECT_ROOT = (SFLINDY_DIR / '..' / '..').abspath()
@@ -35,10 +36,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pipeline',
-    'djangobower',
+    # 'pipeline',
+    # 'djangobower',
 
     'sflindy',
+    'lindy',
     'portal',
     'ninetwenty',
 
@@ -66,7 +68,7 @@ TEMPLATES = [
         'OPTIONS': {
             'environment': 'sflindy.jinja2.environment',
             'extensions': [
-                'pipeline.templatetags.ext.PipelineExtension',
+                # 'pipeline.templatetags.ext.PipelineExtension',
             ]
         },
     },
@@ -92,10 +94,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'sflindy.wsgi.application'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': PROJECT_ROOT / 'db.sqlite3',
-    }
+    'default': config('DATABASE_URL', default='sqlite:///db.sqlite3')
 }
 
 TIME_ZONE = 'UTC'
@@ -115,12 +114,12 @@ PIPELINE_COMPILERS = (
 )
 PIPELINE_SASS_BINARY = '/usr/bin/env sassc'
 
-STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+# STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'pipeline.finders.PipelineFinder',
-    'djangobower.finders.BowerFinder',
+    # 'pipeline.finders.PipelineFinder',
+    # 'djangobower.finders.BowerFinder',
 )
 
 PIPELINE_CSS = {

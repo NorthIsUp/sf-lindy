@@ -6,6 +6,7 @@ django-bower
 pyreact
 path.py
 django-toolbelt
+uwsgi
 
 # test
 tox
@@ -16,3 +17,4 @@ pytest-django
 isort
 autopep8
 django-debug-toolbar
+honcho

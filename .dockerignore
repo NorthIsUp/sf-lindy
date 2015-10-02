@@ -1,0 +1,8 @@
+.*
+*.db
+*.sqlite
+vendor
+static
+node_modules
+*.egg-info
+
