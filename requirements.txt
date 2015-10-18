@@ -1,4 +1,5 @@
 # global
+# todo: pin to version numbers
 django<1.9
 django-jinja
 django-pipeline
@@ -7,7 +8,7 @@ pyreact
 path.py
 django-toolbelt
 uwsgi
-
+jsonfield==1.0.3
 # test
 tox
 pytest

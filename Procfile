@@ -1,1 +1,3 @@
-web: gunicorn --env DJANGO_SETTINGS_MODULE=sflindy.settings --chdir ./src sflindy.wsgi --log-file -
+web: uwsgi \
+    --ini=config/uwsgi.ini \
+    --wsgi=sflindy.wsgi:application
