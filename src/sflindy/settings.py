@@ -40,7 +40,6 @@ INSTALLED_APPS = (
     # 'djangobower',
 
     'sflindy',
-    'lindy',
     'portal',
     'ninetwenty',
 
