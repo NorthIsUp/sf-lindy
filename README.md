@@ -32,12 +32,25 @@ To set up with docker you simply run:
 $ docker-compose up
 ```
 
-To setup a local environment run:
+To setup a local environment create a virtual environment using the tooling of your choice.
 ```
 $ pyvenv ~/.virtualenvs/sflindy
 $ source ~/.virtualenvs/sflindy/bin/activate # or workon sflind if you have virtualenvwrapper installed
+```
+
+Install the requirements and run the test server.
+```
 $ pip install -r requirements.txt
 $ DJANGO_SETTINGS_MODULE=sflindy.settings python manage.py runserver
+```
+
+# Tests
+- Tests should go in tests directory of the app they are associated with.
+
+## Running Tests
+Use the tox framework to run tests
+```
+$ tox
 ```
 
 #### Style
@@ -47,5 +60,6 @@ $ DJANGO_SETTINGS_MODULE=sflindy.settings python manage.py runserver
 - Google Style doc strings
 - Model names should not be plural
 - use [fit-commit](https://github.com/m1foley/fit-commit) for git messages (this one is very hard for me...)
+
 
 [![Build Status](https://travis-ci.org/NorthIsUp/sf-lindy.svg?branch=master)](https://travis-ci.org/NorthIsUp/sf-lindy)

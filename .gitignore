@@ -44,3 +44,8 @@ docs/_build
 node_modules
 static
 vendor
+
+# idea
+*.iml
+*.sqlite3
+.idea

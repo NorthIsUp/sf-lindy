@@ -4,11 +4,15 @@ django<1.9
 django-jinja
 django-pipeline
 django-bower
+django-markupfield
 pyreact
 path.py
 django-toolbelt
 uwsgi
 jsonfield==1.0.3
+markdown
+django-suit
+
 # test
 tox
 pytest

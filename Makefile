@@ -40,10 +40,9 @@ clean-test:
 	rm -fr htmlcov/
 
 lint:
-	flake8 sflindy tests
+	flake8 src
 
-test:
-	python setup.py test
+test: test-all
 
 test-all:
 	tox
